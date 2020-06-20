@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+<LinearLayout
+    android:id="@+id/ll_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <SurfaceView
+        android:id="@+id/surfaceView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <Button
+        android:layout_width="0dp" android:layout_weight="1"
+        android:id="@+id/btn_start_stop"
+        android:text="开始"
+        android:layout_height="wrap_content"/>
+        <Button
+            android:layout_width="0dp" android:layout_weight="1"
+            android:id="@+id/btn_seek"
+            android:text="快进"
+            android:layout_height="wrap_content"/>
+        <Button
+            android:layout_width="0dp" android:layout_weight="1"
+            android:id="@+id/btn_bit_small"
+            android:text="屏幕切换"
+            android:layout_height="wrap_content"/>
+        <Button
+            android:layout_width="0dp" android:layout_weight="1"
+            android:id="@+id/btn_next"
+            android:text="Next"
+            android:layout_height="wrap_content"/>
+        <Button
+            android:layout_width="0dp" android:layout_weight="1"
+            android:id="@+id/btn_previous"
+            android:text="Last"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

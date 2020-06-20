@@ -1,0 +1,12 @@
+ediaPlayerNative: info/warning (3, 0)  第一帧
+W/MediaPlayerNative: info/warning (3, 0)
+2020-06-19 19:14:00.193 16912-16925/com.example.myapplication W/MediaPlayerNative: info/warning (701, 0)
+2020-06-19 19:14:00.429 16912-16925/com.example.myapplication W/MediaPlayerNative: info/warning (702, 0)
+我调用seekto 调用缓冲
+MEDIA_INFO_BUFFERING_START
+MediaPlayer暂停播放等待缓冲更多数据。
+常量值：701
+MEDIA_INFO_BUFFERING_END
+缓冲结束
+常量值：702
+
