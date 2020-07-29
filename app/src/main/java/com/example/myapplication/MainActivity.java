@@ -4,15 +4,18 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, MediaPlayer.OnErrorListener, MediaPlayer.OnCompletionListener, MediaPlayer.OnBufferingUpdateListener {
     private SurfaceView surfaceView;
@@ -20,7 +23,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private SurfaceHolder mSurfaceHolder;
 //    private String mPath="http://vfx.mtime.cn/Video/2019/06/16/mp4/190616155507259516.mp4";
     private String mPath2="http://vfx.mtime.cn/Video/2019/06/14/mp4/190614090849863188.mp4";
-//    private String mPath1="http://vfx.mtime.cn/Video/2019/06/27/mp4/190627231412433967.mp4";
+//    private String mPath1="http://vfx.mti
+//
+//    me.cn/Video/2019/06/27/mp4/190627231412433967.mp4";
     private String mPath1="https://tv.youkutv.cc/2020/01/14/hI6cp3R3nOgQE9MI/playlist.m3u8";
     private Button btn_start_stop;
     private Button btn_seek;
@@ -29,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private LinearLayout ll_container;
     private boolean isSmallScreen=false;
     private Button btn_next,btn_last;
+    private String TAG="tag";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,10 +46,109 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mediaPlayer.setOnErrorListener(this);
         mediaPlayer.setOnCompletionListener(this);
         mediaPlayer.setOnBufferingUpdateListener(this);
+        //startActivity(new Intent(MainActivity.this,FragmentTestAcitivity.class));
 
 
     }
 
+    @Override
+    public boolean dispatchKeyEvent(KeyEvent event) {
+        Log.d(TAG,"22222222222--->");
+        return super.dispatchKeyEvent(event);
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        Log.d(TAG,"11111111111111--->");
+        Toast.makeText(getApplicationContext(),"111",Toast.LENGTH_SHORT).show();
+        switch (keyCode) {
+
+            case KeyEvent.KEYCODE_ENTER:     //确定键enter
+            case KeyEvent.KEYCODE_DPAD_CENTER:
+                Log.d(TAG,"enter--->");
+
+                break;
+
+            case KeyEvent.KEYCODE_BACK:    //返回键
+                Log.e(TAG,"back--->");
+
+                return true;   //这里由于break会退出，所以我们自己要处理掉 不返回上一层
+
+            case KeyEvent.KEYCODE_SETTINGS: //设置键
+                Log.e(TAG,"setting--->");
+
+                break;
+
+            case KeyEvent.KEYCODE_DPAD_DOWN:   //向下键
+
+                /*    实际开发中有时候会触发两次，所以要判断一下按下时触发 ，松开按键时不触发
+                 *    exp:KeyEvent.ACTION_UP
+                 */
+                if (event.getAction() == KeyEvent.ACTION_DOWN){
+
+                    Log.e(TAG,"down--->");
+                }
+
+                break;
+
+            case KeyEvent.KEYCODE_DPAD_UP:   //向上键
+                Log.e(TAG,"up--->");
+
+                break;
+
+            case     KeyEvent.KEYCODE_0:   //数字键0
+                Log.d(TAG,"0--->");
+
+                break;
+
+            case KeyEvent.KEYCODE_DPAD_LEFT: //向左键
+
+                Log.e(TAG,"left--->");
+
+                break;
+
+            case KeyEvent.KEYCODE_DPAD_RIGHT:  //向右键
+                Log.d(TAG,"right--->");
+                break;
+
+            case KeyEvent.KEYCODE_INFO:    //info键
+                Log.d(TAG,"info--->");
+
+                break;
+
+            case KeyEvent.KEYCODE_PAGE_DOWN:     //向上翻页键
+            case KeyEvent.KEYCODE_MEDIA_NEXT:
+                Log.d(TAG,"page down--->");
+
+                break;
+
+
+            case KeyEvent.KEYCODE_PAGE_UP:     //向下翻页键
+            case KeyEvent.KEYCODE_MEDIA_PREVIOUS:
+                Log.d(TAG,"page up--->");
+
+                break;
+
+            case KeyEvent.KEYCODE_VOLUME_UP:   //调大声音键
+                Log.d(TAG,"voice up--->");
+
+                break;
+
+            case KeyEvent.KEYCODE_VOLUME_DOWN: //降低声音键
+                Log.d(TAG,"voice down--->");
+
+                break;
+            case KeyEvent.KEYCODE_VOLUME_MUTE: //禁用声音
+                Log.d(TAG,"voice mute--->");
+                break;
+
+            default:
+                break;
+        }
+
+        return super.onKeyDown(keyCode, event);
+
+    }
     private void initView() {
         surfaceView=findViewById(R.id.surfaceView);
         btn_start_stop=findViewById(R.id.btn_start_stop);
